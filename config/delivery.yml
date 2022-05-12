@@ -39,7 +39,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: nitashav.azurecr.io/build-service/tanzu-java-web-app-git-tap-dev@sha256:b03b41bfc67bccf046e463a9c57a190bf0c9a8c4ff9f5f20f21c6f29950f28e3
+        image: nitashav.azurecr.io/build-service/tanzu-java-web-app-git-tap-dev@sha256:20b0021c25d0a12d2a039dd449614cabe14b08cf3d77ba56708831e9bf3bfe3a
         name: workload
         ports:
         - containerPort: 8080
