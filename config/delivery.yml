@@ -12,9 +12,11 @@ spec:
   template:
     metadata:
       annotations:
+        apps.tanzu.vmware.com/live-update: "true"
         boot.spring.io/actuator: http://:8081/actuator
         boot.spring.io/version: 2.5.13
         conventions.apps.tanzu.vmware.com/applied-conventions: |-
+          developer-conventions/add-source-image-label
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -22,6 +24,7 @@ spec:
           appliveview-sample/app-live-view-connector
           appliveview-sample/app-live-view-appflavours
           appliveview-sample/app-live-view-systemproperties
+        developer.apps.tanzu.vmware.com/image-source-digest: main/f5cf96ef23f3fddba94616112dfad882882aabe4
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
@@ -39,7 +42,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: nitashav.azurecr.io/build-service/tanzu-java-web-app-tap-dev@sha256:9a66b0db291bff04a2d28c52b6e0929a4049563112803e886c934da6c9686a03
+        image: nitashav.azurecr.io/build-service/tanzu-java-web-app-tap-dev@sha256:a46badc9f840dc75b1b165aed9d9b49f774f26160c1f6cd62470f3da69a89c64
         name: workload
         ports:
         - containerPort: 8080
