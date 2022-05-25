@@ -1,25 +1,20 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: tanzu-java-web-app
+  name: tanzu-java-web-app-git
   labels:
     app.kubernetes.io/part-of: tanzu-java-web-app
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
-    carto.run/workload-name: tanzu-java-web-app
+    carto.run/workload-name: tanzu-java-web-app-git
 spec:
   template:
     metadata:
       annotations:
-        apps.tanzu.vmware.com/live-update: "true"
-        autoscaling.knative.dev/maxScale: "1"
-        autoscaling.knative.dev/minScale: "1"
         boot.spring.io/actuator: http://:8081/actuator
-        boot.spring.io/version: 2.5.8
+        boot.spring.io/version: 2.5.13
         conventions.apps.tanzu.vmware.com/applied-conventions: |-
-          developer-conventions/live-update-convention
-          developer-conventions/add-source-image-label
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -27,14 +22,13 @@ spec:
           appliveview-sample/app-live-view-connector
           appliveview-sample/app-live-view-appflavours
           appliveview-sample/app-live-view-systemproperties
-        developer.apps.tanzu.vmware.com/image-source-digest: nitashav.azurecr.io/build-service/tanzu-java-web-app-source:latest@sha256:7d9c8f3e33ac2cfb18d511d93d5f01428f9d6d1af94dc8a86534ddab0afad024
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: tanzu-java-web-app
         apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
-        carto.run/workload-name: tanzu-java-web-app
+        carto.run/workload-name: tanzu-java-web-app-git
         conventions.apps.tanzu.vmware.com/framework: spring-boot
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.port: "8081"
@@ -45,7 +39,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: nitashav.azurecr.io/build-service/tanzu-java-web-app-tap-dev@sha256:fa5551d42a5baa6c3b3e956b9fe46f7838fb546cb332618cf8f47f0bca5d624f
+        image: nitashav.azurecr.io/build-service/tanzu-java-web-app-git-tap-dev@sha256:d3e39331136e03cbc40a4a092f2cc17ad0d1f106915221711f08203a6baf660f
         name: workload
         ports:
         - containerPort: 8080
