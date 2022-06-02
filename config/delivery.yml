@@ -3,7 +3,11 @@ kind: Service
 metadata:
   name: tanzu-dotnet-web-app
   labels:
+    app.kubernetes.io/part-of: tanzu-dotnet-web-app
     apps.tanzu.vmware.com/workload-type: web-basic
+    tanzu.app.live.view: "true"
+    tanzu.app.live.view.application.flavours: steeltoe
+    tanzu.app.live.view.application.name: tanzu-dotnet-web-app
     app.kubernetes.io/component: run
     carto.run/workload-name: tanzu-dotnet-web-app
 spec:
@@ -14,14 +18,18 @@ spec:
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: tanzu-dotnet-web-app
         apps.tanzu.vmware.com/workload-type: web-basic
         carto.run/workload-name: tanzu-dotnet-web-app
+        tanzu.app.live.view: "true"
+        tanzu.app.live.view.application.flavours: steeltoe
+        tanzu.app.live.view.application.name: tanzu-dotnet-web-app
     spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true"
-        image: nitashav.azurecr.io/build-service/tanzu-dotnet-web-app-tap-dev@sha256:85046010f870688d87d678734c1f5c42d24cadf1a265e3d89e5382d90e7c520b
+        image: nitashav.azurecr.io/build-service/tanzu-dotnet-web-app-tap-dev@sha256:22c92c3b88b2ba6bf13a339a606b94361ad3b9fccc533c72949e4ea8344ff855
         name: workload
         resources: {}
         securityContext:
