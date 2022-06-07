@@ -19,8 +19,8 @@ spec:
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
           spring-boot-convention/spring-boot-actuator
-          appliveview-sample/app-live-view-connector
-          appliveview-sample/app-live-view-appflavours
+          appliveview-sample/app-live-view-connector-boot
+          appliveview-sample/app-live-view-appflavours-boot
           appliveview-sample/app-live-view-systemproperties
         developer.conventions/target-containers: workload
       labels:
@@ -33,7 +33,7 @@ spec:
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.port: "8081"
         tanzu.app.live.view.application.flavours: spring-boot
-        tanzu.app.live.view.application.name: demo
+        tanzu.app.live.view.application.name: tanzu-java-web-app-git
     spec:
       containers:
       - env:
