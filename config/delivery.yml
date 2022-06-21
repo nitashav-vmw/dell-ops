@@ -29,7 +29,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true"
-        image: nitashav.azurecr.io/build-service/tanzu-dotnet-web-app-tap-dev@sha256:7816f926bb962fefa7f8ccb068101f443b4eb0cd6fd3f9726e00a85584b47596
+        image: nitashav.azurecr.io/build-service/tanzu-dotnet-web-app-tap-dev@sha256:e2fae252beb194c2114e9a7ece0c29b1d5eef117a3311a1178ae1e66b5b5f89a
         name: workload
         resources: {}
         securityContext:
